@@ -40,12 +40,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   addNewAppointment(date: number): void {
-    const dialogRef = this.dialog.open(NewAppointmentComponent, {
+    this.dialog.open(NewAppointmentComponent, {
       width: '400px',
       data: date
     });
-
-    dialogRef.afterClosed().subscribe(result => {});
   }
 
   drop(event: CdkDragDrop<string[]>) {
