@@ -11,7 +11,7 @@
 <div class="container">
   <div cdkDropListGroup class="calendar">
     <!-- All lists in here will be connected. -->
-    <div
+    <ol
       cdkDropList
       *ngFor="let date of dates"
       [cdkDropListData]="dateTasks[date - 1]"
@@ -19,9 +19,14 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="day">{{date}}</div>
-      <div class="task" *ngFor="let item of dateTasks[date - 1]" cdkDrag>{{item}}</div>
+      <li class="task-container">
+        <div class="task" *ngFor="let item of dateTasks[date - 1]" cdkDrag>
+          <p class="task-label">{{item}}</p>
+          <mat-icon class="delete-icon" (click)="deleteTask(item, date - 1)">delete</mat-icon>
+        </div>
+      </li>
       <button type="button" class="add-button" mat-raised-button (click)="addNewAppointment()">Add appointment</button>
-    </div>
+    </ol>
   </div>
 </div>
 

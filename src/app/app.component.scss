@@ -25,6 +25,7 @@
   padding: 10px;
   gap: 10px;
   overflow-y: scroll;
+  margin: 0;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -43,6 +44,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.task-container {
+  list-style-type: none;
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task-label {
+  cursor: move;
 }
 
 .appointment {
@@ -72,5 +87,18 @@
   margin: 0 auto;
   margin-top: auto;
   margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.delete-icon {
+  font-size: 20px;
+  color: #95BDFF;
+  padding: 2px;
+  background-color: #eee;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }

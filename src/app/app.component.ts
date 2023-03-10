@@ -37,4 +37,14 @@ export class AppComponent {
       );
     }
   }
+
+  deleteTask(item: string, listIndex: number) {
+    this.dateTasks = this.dateTasks.map((tasks, index) => {
+      if (index === listIndex) {
+        return tasks.filter(task => task !== item);
+      }
+
+      return tasks;
+    });
+  }
 }
