@@ -6,6 +6,7 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<link href="https://unpkg.com/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
 
 <div class="container">
   <div cdkDropListGroup class="calendar">
@@ -19,6 +20,7 @@
     >
       <div class="day">{{date}}</div>
       <div class="task" *ngFor="let item of dateTasks[date - 1]" cdkDrag>{{item}}</div>
+      <button type="button" class="add-button" mat-raised-button (click)="addNewAppointment()">Add appointment</button>
     </div>
   </div>
 </div>

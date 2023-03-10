@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .calendar {
@@ -33,6 +34,8 @@
 .day {
   width: 25px;
   height: 25px;
+  min-width: 25px;
+  min-height: 25px;
   background-color: #95BDFF;
   border-radius: 50%;
   color: white;
@@ -52,4 +55,22 @@
   padding-left: 10px;
   background-color: #95BDFF;
   border-radius: 5px;
+}
+
+.add-button {
+  width: 200px;
+  height: 32px;
+  min-width: 200px;
+  min-height: 32px;
+  border: 5px;
+  background-color: #eee;
+  color: #95BDFF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
