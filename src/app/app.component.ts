@@ -18,7 +18,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   title = 'payever-test';
   dates = new Array(30).fill(0).map((_, index) => index + 1);
-  dateTasks = new Array(30).fill(null).map(_ => ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep']);
+  dateTasks = new Array(30).fill(null).map(
+    (_, index) => index === 0 ? ['Interview', 'Emma birthday', 'Calculus test'] : index === 5 ? ['Physic test'] : []);
   subscription: Subscription = new Subscription();
 
   ngOnInit(): void {
