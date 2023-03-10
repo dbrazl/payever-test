@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
+
+import { AppointmentService } from './appointment.service';
+import { Subscription } from 'rxjs';
 
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 
@@ -10,16 +13,36 @@ import { NewAppointmentComponent } from './new-appointment/new-appointment.compo
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
-  constructor(public dialog: MatDialog) {}
+export class AppComponent implements OnInit, OnDestroy {
+  constructor(public dialog: MatDialog, private appointmentService: AppointmentService) {}
 
   title = 'payever-test';
   dates = new Array(30).fill(0).map((_, index) => index + 1);
   dateTasks = new Array(30).fill(null).map(_ => ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep']);
+  subscription: Subscription = new Subscription();
 
-  addNewAppointment(): void {
+  ngOnInit(): void {
+    this.subscription = this.appointmentService.currentMessage.subscribe(
+      (task) => {
+        this.dateTasks = this.dateTasks.map((tasks, index) => {
+          if (index === task.date - 1) {
+            return [...tasks, task.task];
+          }
+
+          return tasks;
+        });
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  addNewAppointment(date: number): void {
     const dialogRef = this.dialog.open(NewAppointmentComponent, {
       width: '400px',
+      data: date
     });
 
     dialogRef.afterClosed().subscribe(result => {});

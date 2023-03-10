@@ -1,7 +1,7 @@
 <form action="" class="new-appointment-modal" mat-dialog-content>
-  <input type="text" class="appointment-input" placeholder="Event name" matInput>
+  <input #search type="text" class="appointment-input" placeholder="Event name" matInput (input)="onSearch(search.value.trim())">
   <div mat-dialog-actions class="buttons-wrapper">
     <button type="button" class="cancel-button" mat-button (click)="cancel()">Cancel</button>
-    <button type="button" class="create-button" mat-button>Create</button>
+    <button type="button" class="create-button" mat-button (click)="addTask()">Create</button>
   </div>
 </form>
