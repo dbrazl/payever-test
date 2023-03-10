@@ -28,7 +28,9 @@ export class NewAppointmentComponent {
   }
 
   addTask(): void {
-    this.appointmentService.setTask(this.search, this.date);
-    this.cancel();
+    if (this.search.length > 0) {
+      this.appointmentService.setTask(this.search, this.date);
+      this.cancel();
+    }
   }
 }
